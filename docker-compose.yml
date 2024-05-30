@@ -8,7 +8,7 @@ networks:
 services:
 
   backend-cicd:
-    image: ghcr.io/imadfaouzi/backend-cicd:dev
+    image: ghcr.io/zin-lr/backend-cicd:dev
     container_name: backend-cicd
     volumes:
       - ./storage:/storage
