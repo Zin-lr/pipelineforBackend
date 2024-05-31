@@ -9,10 +9,13 @@ on:
 
 env:
   IMAGE_TAG: dev
-  BRANCH_NAME: main
+  BRANCH_NAME: master1
   SERVICE_NAME: pipelineforbackend
   COMPOSE_DIR: docker-compose.yml
   WORKDIR: ~/github_actions/pipelineforBackend
+  BUILD_CONTEXT: .
+  REPO_SOURCE: docker-compose.yaml
+  REPO_TARGET: /home/ubuntu/github_actions/pipelineforbackend
 
 jobs:
 
@@ -29,3 +32,24 @@ jobs:
           registry_host: ${{ secrets.REGISTRY_HOST }}
           registry_username: ${{ github.actor }}
           registry_password: ${{ secrets.REGISTRY_GIT_PATH }}
+  deploy:
+    name: "Deploy To Server"
+    runs-on: ubuntu-latest
+    needs: [builder]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - uses: ./.github/workflows/composite/deploy
+        with:
+          service_id: ${{ env.SERVICE_ID }}
+          workdir: ${{ env.WORKDIR }}
+          compose_dir: ${{ env.COMPOSE_DIR }}
+          repository: ${{ github.repository }}
+          ssh_key: ${{ secrets.EC2_SSH_KEY }}
+          ssh_host: ${{ secrets.EC2_HOST }}
+          ssh_user: ${{ secrets.EC2_SSH_USER }}
+          registry_host: ${{ secrets.REGISTRY_HOST }}
+          registry_username: ${{ github.actor }}
+          registry_password: ${{ secrets.REGISTRY_GIT_PATH }}
+          repo_source:  ${{ env.REPO_SOURCE }}
+          repo_target:  ${{ env.REPO_TARGET }}         

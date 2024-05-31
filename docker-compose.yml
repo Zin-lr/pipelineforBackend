@@ -7,7 +7,7 @@ networks:
     driver: bridge
 services:
 
-  backend-cicd:
+  pipelineforbackend:
     image: ghcr.io/zin-lr/pipelineforbackend:dev
     container_name: backend-container
     volumes:
