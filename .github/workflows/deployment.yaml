@@ -10,9 +10,9 @@ on:
 env:
   IMAGE_TAG: dev
   BRANCH_NAME: main
-  SERVICE_NAME: backend-cicd
+  SERVICE_NAME: pipelineforbackend
   COMPOSE_DIR: docker-compose.yml
-  WORKDIR: ~/github_actions/backend-cicd
+  WORKDIR: ~/github_actions/pipelineforBackend
 
 jobs:
 

@@ -8,8 +8,8 @@ networks:
 services:
 
   backend-cicd:
-    image: ghcr.io/zin-lr/backend-cicd:dev
-    container_name: backend-cicd
+    image: ghcr.io/zin-lr/pipelineforbackend:dev
+    container_name: backend-container
     volumes:
       - ./storage:/storage
     networks:
