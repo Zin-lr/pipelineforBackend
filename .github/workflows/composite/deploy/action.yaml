@@ -44,7 +44,7 @@ runs:
   steps:
      
     - name: copy file via ssh key
-      uses: appleboy/scp-action@v0.1.7
+      uses: appleboy/scp-action@v1.6.14
       with:
         host: ${{ inputs.ssh_host }}
         username: ${{ inputs.ssh_user }}
