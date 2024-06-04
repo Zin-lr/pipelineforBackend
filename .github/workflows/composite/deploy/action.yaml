@@ -42,7 +42,16 @@ inputs:
 runs:
   using: "composite"
   steps:
-
+     
+    - name: copy file via ssh key
+      uses: appleboy/scp-action@v0.1.7
+      with:
+        host: ${{ inputs.ssh_host }}
+        username: ${{ inputs.ssh_user }}
+        port: 22
+        key: ${{ inputs.ssh_key }}
+        source: ${{ inputs.repo_source }}
+        target: ${{ inputs.repo_target }} 
     - name: Configure SSH
       shell: bash
       run: |
