@@ -8,7 +8,7 @@ networks:
 services:
 
   pipelineforbackend:
-    image: ghcr.io/zin-lr/pipelineforbackend:dev
+    image: ghcr.io/zineblachghar199/pipelineforbackend:dev
     container_name: backend-container
     volumes:
       - ./storage:/storage
